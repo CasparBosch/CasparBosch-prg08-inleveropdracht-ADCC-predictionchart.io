@@ -9,90 +9,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script defer src="predict.js" type="module"></script>
-    <title>Predict if your match is edible!</title>
+    <title>Predict if your match is winnable!</title>
 </head>
+<body>
 <div>
 <form>
-    <label>cap-shape</label>
-    <select id = "capShape">
-        <option value = "b">bell</option>
-        <option value = "c">conical</option>
-        <option value = "x">convex</option>
-        <option value = "f">flat</option>
-        <option value = "k">knobbed</option>
-        <option value = "s">sunken</option>
+    <label>Blue Herald Kills</label>
+    <select id = "blueHeraldKills">
+        <option value = "1.0">1.0</option>
+        <option value = "2.0">2.0</option>
+        <option value = "3.0">3.0</option>
     </select>
-    <label>cap-surface</label>
-    <select id = "capSurface">
-        <option value = "f">fibrous</option>
-        <option value = "g">grooves</option>
-        <option value = "y">scaly</option>
-        <option value = "s">smooth</option>
+    <label>Red Herald Kills</label>
+    <select id = "redHeraldKills">
+        <option value = "1.0">1.0</option>
+        <option value = "2.0">2.0</option>
+        <option value = "3.0">3.0</option>
     </select>
-    <label>cap-color</label>
-    <select id = "capColor">
-        <option value = "n">brown</option>
-        <option value = "b">buff</option>
-        <option value = "c">cinnamon</option>
-        <option value = "g">gray</option>
-        <option value = "r">green</option>
-        <option value = "p">pink</option>
-        <option value = "u">purple</option>
-        <option value = "e">red</option>
-        <option value = "w">white</option>
-        <option value = "y">yellow</option>
-    </select>
-    <!-- <label>bruises</label>
-    <select>
-        <option value = "t">bruises</option>
-        <option value = "f">no</option>
-    </select> -->
-    <label>odor</label>
-    <select id = "odor">
-        <option value = "a">almond</option>
-        <option value = "l">anise</option>
-        <option value = "c">creosote</option>
-        <option value = "y">fishy</option>
-        <option value = "f">foul</option>
-        <option value = "m">musty</option>
-        <option value = "n">none</option>
-        <option value = "p">pungent</option>
-        <option value = "s">spicy</option>
-    </select>
-    <label>gill-attachment</label>
-    <select id = "grillAttachment">
-        <option value = "a">attached</option>
-        <option value = "d">descending</option>
-        <option value = "f">free</option>
-        <option value = "n">notched</option>
-    </select>
-    <label>gill-spacing</label>
-    <select id = "grillSpacing">
-        <option value = "c">close</option>
-        <option value = "w">crowded</option>
-        <option value = "d">distant</option>
-    </select>
-    <label>gill-size</label>
-    <select id = "grillSize">
-        <option value = "b">broad</option>
-        <option value = "n">narrow</option>
-    </select>
-    <label>gill-color</label>
-    <select id = "grillColor">
-        <option value = "k">black</option>
-        <option value = "n">brown</option>
-        <option value = "b">buff</option>
-        <option value = "h">chocolate</option>
-        <option value = "g">gray</option>
-        <option value = "r">green</option>
-        <option value = "o">orange</option>
-        <option value = "p">pink</option>
-        <option value = "u">purple</option>
-        <option value = "e">red</option>
-        <option value = "w">white</option>
-        <option value = "y">yellow</option>
-    </select>
-    
     <input type="submit" value="Submit" onClick="modelLoaded()"><br>
 </form>
 </div>

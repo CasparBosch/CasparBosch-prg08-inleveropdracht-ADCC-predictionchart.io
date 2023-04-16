@@ -29,13 +29,13 @@ function modelLoaded(model) {
     let redTowersDestroyed = document.getElementById('redTowersDestroyed')
 
     // test to see if the model works
-    let match = { blueGold: blueGold.value, blueMinionsKilled: blueMinionsKilled.value, blueJungleMinionsKilled: blueJungleMinionsKilled.value, blueAvgLevel: blueAvgLevel.value, redGold: redGold.value, redMinionsKilled: redMinionsKilled.value, redJungleMinionsKilled: redJungleMinionsKilled.value, redAvgLevel: redAvgLevel.value, blueChampKills: blueChampKills.value, blueHeraldKills: blueHeraldKills.value, blueDragonKills: blueDragonKills.value, blueTowersDestroyed: blueTowersDestroyed.value, redChampKills: redChampKills.value, redHeraldKills: redHeraldKills.value, redDragonKills: redDragonKills.value, redTowersDestroyed: redTowersDestroyed.value}
+    let match = { blueHeraldKills: blueHeraldKills.value, redHeraldKills: redHeraldKills.value}
     let prediction = decisionTree.predict(match)
     console.log("predicted " + prediction)
-    if (prediction == "p") {
-    document.getElementById("prediction").innerHTML = "This match is poisonous."
-    } else if (prediction == "e") {
-    document.getElementById("prediction").innerHTML = "This match is edible."
+    if (prediction == "0") {
+    document.getElementById("prediction").innerHTML = "This match is lost."
+    } else if (prediction == "1") {
+    document.getElementById("prediction").innerHTML = "This match is won."
     }
 }
 

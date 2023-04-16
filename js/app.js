@@ -6,7 +6,7 @@ import { VegaTree } from "../libraries/vegatree.js"
 //
 const csvFile = "./data/MatchTimelinesFirst15.csv"
 const trainingLabel = "blue_win"  
-const ignored = ["matchId","blue_win","blueGold","blueMinionsKilled","blueJungleMinionsKilled","blueAvgLevel","redGold","redMinionsKilled","redJungleMinionsKilled","redAvgLevel","blueChampKills","blueHeraldKills","blueTowersDestroyed","redChampKills","redHeraldKills","redTowersDestroyed"]  
+const ignored = ["matchId","blue_win","blueGold","blueMinionsKilled","blueJungleMinionsKilled","blueAvgLevel","redGold","redMinionsKilled","redJungleMinionsKilled","redAvgLevel","blueChampKills","blueDragonKills","blueTowersDestroyed","redChampKills","redDragonKills","redTowersDestroyed"]  
 let amountCorrect = 0;
 let edibleAndEdible = 0;
 let edibleAndUnedible = 0;
