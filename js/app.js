@@ -4,9 +4,9 @@ import { VegaTree } from "../libraries/vegatree.js"
 //
 // DATA
 //
-const csvFile = "./data/mushrooms.csv"
-const trainingLabel = "class"  
-const ignored = ["bruises"]  
+const csvFile = "./data/MatchTimelinesFirst15.csv"
+const trainingLabel = "blue_win"  
+const ignored = ["matchId","blue_win","blueGold","blueMinionsKilled","blueJungleMinionsKilled","blueAvgLevel","redGold","redMinionsKilled","redJungleMinionsKilled","redAvgLevel","blueChampKills","blueHeraldKills","blueTowersDestroyed","redChampKills","redHeraldKills","redTowersDestroyed"]  
 let amountCorrect = 0;
 let edibleAndEdible = 0;
 let edibleAndUnedible = 0;
@@ -50,27 +50,27 @@ function trainModel(data) {
 
     for (let i = 0; i < testData.length; i++) {
     
-        let mushroom = testData[i]
+        let match = testData[i]
         // create copy of passenger, without label
-        const mushroomNoLabel = Object.assign({}, mushroom)
-        delete mushroomNoLabel.class
+        const matchNoLabel = Object.assign({}, match)
+        delete matchNoLabel.class
     
         // prediction
-        let prediction = decisionTree.predict(mushroomNoLabel)
+        let prediction = decisionTree.predict(matchNoLabel)
     
         // compare prediction with real label
-        if (prediction == mushroom.class) {
+        if (prediction == match.class) {
             console.log("Deze voorspelling is goed gegaan!")
             amountCorrect = amountCorrect + 1;
         }
     
-        if (prediction == "e" && mushroom.class == "e") {
+        if (prediction == "e" && match.class == "e") {
             edibleAndEdible = edibleAndEdible + 1;
-        }   else if (prediction == "e" && mushroom.class == "p") {
+        }   else if (prediction == "e" && match.class == "p") {
             edibleAndUnedible = edibleAndUnedible + 1;
-        }   else if (prediction == "p" && mushroom.class == "p") {
+        }   else if (prediction == "p" && match.class == "p") {
             unedibleAndUnedible = unedibleAndUnedible + 1;
-        }   else if (prediction == "p" && mushroom.class == "e") {
+        }   else if (prediction == "p" && match.class == "e") {
             unedibleAndEdible = unedibleAndEdible + 1;
         }
 
