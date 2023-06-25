@@ -4,14 +4,14 @@ import { VegaTree } from "../libraries/vegatree.js"
 //
 // DATA
 //
-const csvFile = "./data/MatchTimelinesFirst15.csv"
-const trainingLabel = "blue_win"  
-const ignored = ["matchId","blue_win","blueGold","blueMinionsKilled","blueJungleMinionsKilled","blueAvgLevel","redGold","redMinionsKilled","redJungleMinionsKilled","redAvgLevel","blueChampKills","blueDragonKills","blueTowersDestroyed","redChampKills","redDragonKills","redTowersDestroyed"]  
+const csvFile = "./data/ADCCWINRATE/fighters_dataset.csv"
+const trainingLabel = "win_ratio"  
+const ignored = ["name","win_ratio", "n_editions_competed", "scored_points_per_fight", "suffered_points_per_fight", "fights_per_edition", "favorite_target", "most_vulnerable", "n_weight_classes", "main_weight_class", "avg_match_importance", "highest_match_importance", "open_weight_ratio", "n_titles", "champion", "custom_score", "n_different_subs", "fought_superfight", "total_wins", "debut_year", "female"]  
 let amountCorrect = 0;
-let edibleAndEdible = 0;
-let edibleAndUnedible = 0;
-let unedibleAndEdible = 0;
-let unedibleAndUnedible = 0;
+let winableAndWinable = 0;
+let winableAndUnwinable = 0;
+let unwinableAndWinable = 0;
+let unwinableAndUnwinable = 0;
 
 //
 // load csv data as json
@@ -65,13 +65,13 @@ function trainModel(data) {
         }
     
         if (prediction == "e" && match.class == "e") {
-            edibleAndEdible = edibleAndEdible + 1;
+            winableAndWinable = winableAndWinable + 1;
         }   else if (prediction == "e" && match.class == "p") {
-            edibleAndUnedible = edibleAndUnedible + 1;
+            winableAndUnwinable = winableAndUnwinable + 1;
         }   else if (prediction == "p" && match.class == "p") {
-            unedibleAndUnedible = unedibleAndUnedible + 1;
+            unwinableAndUnwinable = unwinableAndUnwinable + 1;
         }   else if (prediction == "p" && match.class == "e") {
-            unedibleAndEdible = unedibleAndEdible + 1;
+            unwinableAndWinable = unwinableAndWinable + 1;
         }
 
         
@@ -82,11 +82,11 @@ let totalAmount = testData.length;
 let accuracy = amountCorrect / totalAmount * 100;
 document.getElementById('accuracy').innerHTML = "The accuracy is " + accuracy + "%";
 
-var confusionTable = document.getElementById("confusion");
-confusionTable.rows[1].cells[1].textContent = edibleAndEdible;
-confusionTable.rows[1].cells[2].textContent = edibleAndUnedible;
-confusionTable.rows[2].cells[1].textContent = unedibleAndEdible;
-confusionTable.rows[2].cells[2].textContent = unedibleAndUnedible;
+let confusionTable = document.getElementById("confusion");
+confusionTable.rows[1].cells[1].textContent = winableAndWinable;
+confusionTable.rows[1].cells[2].textContent = winableAndUnwinable;
+confusionTable.rows[2].cells[1].textContent = unwinableAndWinable;
+confusionTable.rows[2].cells[2].textContent = unwinableAndUnwinable;
 
 let jsons = decisionTree.stringify()
     console.log(jsons)
