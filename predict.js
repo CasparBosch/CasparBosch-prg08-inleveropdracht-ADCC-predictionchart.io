@@ -41,7 +41,7 @@ function modelLoaded(model) {
     let match = { total_fights: total_fights.value, sub_win_ratio: sub_win_ratio.value, point_win_ratio: point_win_ratio.value}
     let prediction = decisionTree.predict(match)
     console.log("predicted " + prediction)
-    if (prediction <= "0.5") {
+    if (prediction <= "0.49") {
     document.getElementById("prediction").innerHTML = "This match is lost."
     } else if (prediction >= "0.5") {
     document.getElementById("prediction").innerHTML = "This match is won."

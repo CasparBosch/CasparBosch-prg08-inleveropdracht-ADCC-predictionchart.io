@@ -86,11 +86,11 @@ function trainModel(data) {
 
         if (prediction >= "0.5" && match.win_ratio >= "0.5") {
             winableAndWinable = winableAndWinable + 1;
-        } else if (prediction >= "0.5" && match.win_ratio <= "0.5") {
+        } else if (prediction >= "0.5" && match.win_ratio <= "0.49") {
             winableAndUnwinable = winableAndUnwinable + 1;
-        } else if (prediction <= "0.5" && match.win_ratio <= "0.5") {
+        } else if (prediction <= "0.49" && match.win_ratio <= "0.49") {
             unwinableAndUnwinable = unwinableAndUnwinable + 1;
-        } else if (prediction <= "0.5" && match.win_ratio >= "0.5") {
+        } else if (prediction <= "0.49" && match.win_ratio >= "0.5") {
             unwinableAndWinable = unwinableAndWinable + 1;
         }
     }
