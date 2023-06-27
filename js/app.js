@@ -109,7 +109,7 @@ function trainModel(data) {
     console.log(winableAndUnwinable);
 
     let jsons = decisionTree.stringify();
-    console.log(jsons);
+    // console.log(jsons);
 
     // trainModel()
 
